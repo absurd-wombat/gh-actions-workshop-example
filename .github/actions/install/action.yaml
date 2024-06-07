@@ -1,4 +1,4 @@
-name: install
+name: checkout and install
 description: checkout repository, set up node 20, install dependencies
 runs:
   using: 'composite'
@@ -12,5 +12,5 @@ runs:
         node-version: 20
 
     - name: Install dependencies
-      uses: actions/npm@v4
+      shell: bash
       run: npm ci
