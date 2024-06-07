@@ -79,9 +79,9 @@ jobs:
 
       - name: Run Playwright tests
         run:
-          npx playwright test --project ${{ needs.cd-pipeline.outputs.page_url }} --browser ${{ matrix.browser }}
+          npx playwright test --project ${{ matrix.browser }}
         env:
-          PLAYWRIGHT_BASE_URL: ${{  }}
+          PLAYWRIGHT_BASE_URL: ${{ needs.cd-pipeline.outputs.page_url }}
 #
 #      - uses: actions/upload-artifact@v4
 #        if: always()
