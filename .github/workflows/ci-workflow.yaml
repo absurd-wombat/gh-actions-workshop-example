@@ -5,7 +5,7 @@ name: ci-workflow
 on: [push, workflow_dispatch]
 
 jobs:
-  ci-pipeline:
+  ci-workflow:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository code
@@ -36,7 +36,6 @@ jobs:
     needs: ci-workflow
 
     permissions:
-      #  permission to read and push to pages
       pages: write
       id-token: write
 
