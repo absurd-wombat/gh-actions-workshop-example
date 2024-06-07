@@ -24,3 +24,9 @@ jobs:
           npm run test
           npm run build
           echo "All npm scripts have been run"
+
+      - name: upload build artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifact
+          path: 'dist/'
