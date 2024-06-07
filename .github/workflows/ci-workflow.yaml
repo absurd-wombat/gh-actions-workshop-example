@@ -51,11 +51,12 @@ jobs:
       - name: Deploy pages
         id: deployment
         uses: actions/deploy-pages@v4
+    outputs:
+      page_url: ${{ steps.deployment.outputs.page_url }}
 
   smoke-test:
     needs: cd-pipeline
     runs-on: ubuntu-latest
-
 
     timeout-minutes: 3
     strategy:
@@ -78,14 +79,14 @@ jobs:
 
       - name: Run Playwright tests
         run:
-          npx playwright test --project ${{ matrix.browser }}
+          npx playwright test --project ${{ needs.cd-pipeline.outputs.page_url }} --browser ${{ matrix.browser }}
         env:
-          PLAYWRIGHT_BASE_URL: ${{ steps.deployment.outputs.page_url }}
-
+          PLAYWRIGHT_BASE_URL: ${{  }}
+#
 #      - uses: actions/upload-artifact@v4
 #        if: always()
 #        with:
 #          name:
-#            playwright-report-<TODO: Upload the artefacts for the specific browser>
+#            playwright-report-${{ matrix.browser }}
 #          path: playwright-report/
 #          retention-days: 1
