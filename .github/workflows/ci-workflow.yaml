@@ -10,13 +10,11 @@ jobs:
     steps:
       - name: Checkout repository code
         uses: actions/checkout@v4
-        run: echo "The ${{ github.repository }} repository has been cloned to the runner."
 
       - name: setup nodejs 20
         uses: actions/setup-node@v2
         with:
           node-version: 12
-        run: echo "Node.js has been set up"
       - name: run npm scripts as commands in shell
         run: |
           npm ci
